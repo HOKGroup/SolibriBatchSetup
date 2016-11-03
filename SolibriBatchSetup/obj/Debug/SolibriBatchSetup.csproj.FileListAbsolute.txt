@@ -54,3 +54,33 @@ C:\Users\jinsol.kim\Documents\GitHub\HOK-Revit-Addins\Solibri Batch\src\SolibriB
 C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\src\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.exe.config
 C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\src\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.exe
 C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\src\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.pdb
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.exe.config
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.exe
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.pdb
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.exe.manifest
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.application
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.exe
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\bin\Debug\HOK Solibri Batch Manager.pdb
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\SolibriBatchSetup.csprojResolveAssemblyReference.cache
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\MainWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\App.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager_MarkupCompile.cache
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager_MarkupCompile.lref
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\MainWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.g.resources
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\SolibriBatchSetup.Properties.Resources.resources
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\SolibriBatchSetup.csproj.GenerateResource.Cache
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.exe.manifest
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\HOK Solibri Batch Manager.application
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\BatchOptionWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\CreateTaskWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\OpenFileWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\SaveFileWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\SettingWindow.baml
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\BatchOptionWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\CreateTaskWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\OpenFileWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\SaveFileWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\SettingWindow.g.cs
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\Windows\MetroStyles.baml

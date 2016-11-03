@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\src\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\obj\Debug\
 SolibriBatchSetup
 none
 false
 DEBUG;TRACE
-C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\src\SolibriBatchSetup\SolibriBatchSetup\App.xaml
-61145756456
+C:\Users\jinsol.kim\Documents\GitHub\SolibriBatchSetup\SolibriBatchSetup\App.xaml
+71333472083
 
-201144963299
+22-1334414329
 14-1849907472
-CreateTaskWindow.xaml;MainWindow.xaml;MetroStyles.xaml;OpenFileWindow.xaml;SaveFileWindow.xaml;SettingWindow.xaml;
+Windows\BatchOptionWindow.xaml;Windows\CreateTaskWindow.xaml;MainWindow.xaml;Windows\MetroStyles.xaml;Windows\OpenFileWindow.xaml;Windows\SaveFileWindow.xaml;Windows\SettingWindow.xaml;
 
-True
+False
 

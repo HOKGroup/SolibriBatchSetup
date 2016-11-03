@@ -25,15 +25,15 @@ namespace SolibriBatchSetup
     public partial class SettingWindow : Window
     {
         private AutorunSettings settings = new AutorunSettings();
-        private List<SolibriProperties> solibries = new List<SolibriProperties>();
-        private List<RemoteMachine> remoteComputers = new List<RemoteMachine>();
+        private string batchOptionFile = "";
 
         public AutorunSettings Settings { get { return settings; } set { settings = value; } }
+        public string BatchOptionFile { get { return batchOptionFile; } set { batchOptionFile = value; } }
 
-        public SettingWindow(AutorunSettings autoSetting)
+        public SettingWindow(AutorunSettings autoSetting, string optionFile)
         {
             settings = autoSetting;
-
+            batchOptionFile = optionFile;
             InitializeComponent();
         }
 
@@ -188,8 +188,20 @@ namespace SolibriBatchSetup
         {
             try
             {
-                comboBoxSolibri.SelectedIndex = solibries.FindIndex(o => o.VersionNumber == "Solibri Model Checker v9.7");
-                comboBoxComputer.SelectedIndex = remoteComputers.FindIndex(o => o.ComputerName == "NY-BAT-D001");
+                var solibriFound = from solibri in settings.Options.SolibriOptions where solibri.VersionNumber == "Solibri Model Checker v9.7" select solibri;
+                if(solibriFound.Count() > 0)
+                {
+                    int index = settings.Options.SolibriOptions.IndexOf(solibriFound.First());
+                    comboBoxSolibri.SelectedIndex = index;
+                }
+
+                var remoteFound = from remote in settings.Options.RemoteOptions where remote.ComputerName == "NY-BAT-D001" select remote;
+                if (remoteFound.Count() > 0)
+                {
+                    int index = settings.Options.RemoteOptions.IndexOf(remoteFound.First());
+                    comboBoxComputer.SelectedIndex = index;
+                }
+               
                 settings.Classifications = new ObservableCollection<OpenClassification>();
                 settings.Rulesets = new ObservableCollection<OpenRuleset>();
                 
@@ -293,6 +305,29 @@ namespace SolibriBatchSetup
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to save user settings.\n" + ex.Message, "Save User Settings", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void buttonEditOption_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                BatchOptionWindow optionwindow = new BatchOptionWindow(settings, batchOptionFile);
+                optionwindow.Owner = this;
+                if ((bool)optionwindow.ShowDialog())
+                {
+
+                }
+                else
+                {
+         
+                    optionwindow.RestoreSettings();
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
             }
         }
 

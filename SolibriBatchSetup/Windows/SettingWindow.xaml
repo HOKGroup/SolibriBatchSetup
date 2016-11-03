@@ -21,10 +21,13 @@
                 </Grid.RowDefinitions>
                 <Label Content="Solibri Version: " HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center"/>
                 <ComboBox x:Name="comboBoxSolibri" HorizontalAlignment="Stretch" Margin="145,0,100,0" VerticalAlignment="Center" Background="Transparent" Height="28" 
-                          DisplayMemberPath="VersionNumber" SelectedItem="{Binding SolibriSetup}" ItemsSource="{Binding SolibriOptions}"/>
+                          DisplayMemberPath="VersionNumber" SelectedValue="{Binding SolibriSetup}" ItemsSource="{Binding Options.SolibriOptions}"/>
                 <Label Content="Remote Computer: " Grid.Row="1" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center"/>
                 <ComboBox x:Name="comboBoxComputer" HorizontalAlignment="Stretch" Grid.Row="1" Margin="145,0,100,0" VerticalAlignment="Center" Background="Transparent" Height="28" 
-                          DisplayMemberPath="DirectoryName" SelectedItem="{Binding RemoteSetup}" ItemsSource="{Binding RemoteOptions}"/>
+                          DisplayMemberPath="DirectoryName" SelectedValue="{Binding RemoteSetup}" ItemsSource="{Binding Options.RemoteOptions}"/>
+                <Button x:Name="buttonEditOption" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Width="28" Height="28" Click="buttonEditOption_Click">
+                    <Image Height="20" Width="20" Source="Images/gear.png"/>
+                </Button>
             </Grid>
         </GroupBox>
         <GroupBox Header="Classifications and Rulesets" Margin="7,7,7,0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

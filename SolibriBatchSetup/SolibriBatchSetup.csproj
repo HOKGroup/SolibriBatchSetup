@@ -27,8 +27,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>2016.0.1.1</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2016.0.1.2</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -91,28 +91,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BatchSetupUtils.cs" />
-    <Compile Include="CreateTaskWindow.xaml.cs">
+    <Compile Include="Windows\BatchOptionWindow.xaml.cs">
+      <DependentUpon>BatchOptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\BatchSetupUtils.cs" />
+    <Compile Include="Windows\CreateTaskWindow.xaml.cs">
       <DependentUpon>CreateTaskWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataGridUtils.cs" />
+    <Compile Include="Utils\DataGridUtils.cs" />
     <Compile Include="FileFolderDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OpenFileWindow.xaml.cs">
+    <Compile Include="Windows\OpenFileWindow.xaml.cs">
       <DependentUpon>OpenFileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SaveFileWindow.xaml.cs">
+    <Compile Include="Windows\SaveFileWindow.xaml.cs">
       <DependentUpon>SaveFileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Schema\AutorunSettings.cs" />
     <Compile Include="Schema\BatchSetupSchema.cs" />
     <Compile Include="Schema\ProcessUnit.cs" />
-    <Compile Include="SettingWindow.xaml.cs">
+    <Compile Include="Windows\SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\ValueConverters.cs" />
-    <Page Include="CreateTaskWindow.xaml">
+    <Page Include="Windows\BatchOptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CreateTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,19 +136,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MetroStyles.xaml">
+    <Page Include="Windows\MetroStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OpenFileWindow.xaml">
+    <Page Include="Windows\OpenFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SaveFileWindow.xaml">
+    <Page Include="Windows\SaveFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingWindow.xaml">
+    <Page Include="Windows\SettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,26 +187,26 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\hoklogo.ico" />
+    <Resource Include="Windows\Images\hoklogo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\file_add.png" />
+    <Resource Include="Windows\Images\file_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\file_delete.png" />
+    <Resource Include="Windows\Images\file_delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\open.png" />
+    <Resource Include="Windows\Images\open.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bcf.ico" />
+    <Resource Include="Windows\Images\bcf.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ifc_add.ico" />
-    <Resource Include="Images\ifc_delete.ico" />
+    <Resource Include="Windows\Images\ifc_add.ico" />
+    <Resource Include="Windows\Images\ifc_delete.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\solibri.ico" />
+    <Resource Include="Windows\Images\solibri.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -221,34 +229,40 @@
     <Resource Include="hoklogo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\solibri_add.png" />
-    <Resource Include="Images\solibri_delete.png" />
+    <Resource Include="Windows\Images\solibri_add.png" />
+    <Resource Include="Windows\Images\solibri_delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\folder_open.png" />
+    <Resource Include="Windows\Images\folder_open.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\add.png" />
-    <Resource Include="Images\delete.png" />
+    <Resource Include="Windows\Images\add.png" />
+    <Resource Include="Windows\Images\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\setting.png" />
+    <Resource Include="Windows\Images\setting.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\refresh.png" />
+    <Resource Include="Windows\Images\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\folder.png" />
+    <Resource Include="Windows\Images\folder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\save.png" />
+    <Resource Include="Windows\Images\save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\checked.png" />
-    <Resource Include="Images\unchecked.png" />
+    <Resource Include="Windows\Images\checked.png" />
+    <Resource Include="Windows\Images\unchecked.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\import.png" />
+    <Resource Include="Windows\Images\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Images\gear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,6 +19,7 @@ using System.Xml.Serialization;
 using Microsoft.Win32;
 using SolibriBatchSetup.Schema;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using SolibriBatchSetup.Utils;
 
 namespace SolibriBatchSetup
 {
@@ -32,12 +33,15 @@ namespace SolibriBatchSetup
        
         private AutorunSettings settings = new AutorunSettings();
         private bool isEditing = false;
+        private string batchOptionFile = "BatchOptions.xml";
 
         public MainWindow()
         {
             InitializeComponent();
             this.Title = "Solibri Batch Manager v." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             DisplayConfig();
+            LoadBatchOptions();
             LoadUserSettings();
         }
 
@@ -61,12 +65,51 @@ namespace SolibriBatchSetup
             }
         }
 
+        private void LoadBatchOptions()
+        {
+            try
+            {
+                string appDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Solibri Batch Manager");
+                if (!Directory.Exists(appDirectory))
+                {
+                    Directory.CreateDirectory(appDirectory);
+                }
+                batchOptionFile = System.IO.Path.Combine(appDirectory, batchOptionFile);
+
+                if (!File.Exists(batchOptionFile))
+                {
+                    BatchOptions options = new BatchOptions();
+                    options.WriteDefault();
+                    SettingUtils.WriteSettings(batchOptionFile, options);
+                    settings.Options = options;
+                }
+                else
+                {
+                    settings.Options = SettingUtils.ReadSettings(batchOptionFile);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+            }
+        }
+
         private void LoadUserSettings()
         {
             try
             {
-                settings.SolibriSetup = settings.SolibriOptions.Find(o => o.VersionNumber == Properties.Settings.Default.SolibriVersionNumber);
-                settings.RemoteSetup = settings.RemoteOptions.Find(o => o.ComputerName == Properties.Settings.Default.ComputerName);
+                var solibriFound = from solibri in settings.Options.SolibriOptions where solibri.VersionNumber == Properties.Settings.Default.SolibriVersionNumber select solibri;
+                if (solibriFound.Count() > 0)
+                {
+                    settings.SolibriSetup = solibriFound.First();
+                }
+                var remoteFound = from remote in settings.Options.RemoteOptions where remote.ComputerName == Properties.Settings.Default.ComputerName select remote;
+                if (remoteFound.Count() > 0)
+                {
+                    settings.RemoteSetup = remoteFound.First();
+                }
+
                 foreach (string classification in Properties.Settings.Default.Classifications)
                 {
                     settings.Classifications.Add(new OpenClassification(classification));
@@ -261,7 +304,7 @@ namespace SolibriBatchSetup
         {
             try
             {
-                SettingWindow settingWindow = new SettingWindow(settings);
+                SettingWindow settingWindow = new SettingWindow(settings, batchOptionFile);
                 settingWindow.Owner = this;
                 if (settingWindow.ShowDialog() == true)
                 {
@@ -348,7 +391,7 @@ namespace SolibriBatchSetup
         {
             try
             {
-                SettingWindow settingWindow = new SettingWindow(settings);
+                SettingWindow settingWindow = new SettingWindow(settings, batchOptionFile);
                 settingWindow.Owner = this;
                 if (settingWindow.ShowDialog() == true)
                 {

@@ -10,8 +10,7 @@ namespace SolibriBatchSetup.Schema
 {
     public class AutorunSettings : INotifyPropertyChanged
     {
-        private List<SolibriProperties> solibriOptions = new List<SolibriProperties>();
-        private List<RemoteMachine> remoteOptions = new List<RemoteMachine>();
+        private BatchOptions batchOptions = new BatchOptions();
 
         private SolibriProperties solibriSetup = new SolibriProperties();
         private RemoteMachine remoteSetup = new RemoteMachine();
@@ -20,8 +19,7 @@ namespace SolibriBatchSetup.Schema
         private ReportSettings reportSettings = new ReportSettings();
         private SaveModelSettings saveSolibriSettings = new SaveModelSettings();
 
-        public List<SolibriProperties> SolibriOptions { get { return solibriOptions; } set { solibriOptions = value; } }
-        public List<RemoteMachine> RemoteOptions { get { return remoteOptions; } set { remoteOptions = value; } }
+        public BatchOptions Options { get { return batchOptions; } set { batchOptions = value; NotifyPropertyChanged("Options"); } }
 
         public SolibriProperties SolibriSetup { get { return solibriSetup; } set { solibriSetup = value; NotifyPropertyChanged("SolibriSetup"); } }
         public RemoteMachine RemoteSetup { get { return remoteSetup; } set { remoteSetup = value; NotifyPropertyChanged("RemoteSetup"); } }
@@ -32,22 +30,7 @@ namespace SolibriBatchSetup.Schema
         
         public AutorunSettings()
         {
-            SolibriProperties sp = new SolibriProperties("Solibri Model Checker v9.5", @"C:\Program Files\Solibri\SMCv9.5\Solibri Model Checker v9.5.exe");
-            solibriOptions.Add(sp);
-            sp = new SolibriProperties("Solibri Model Checker v9.6", @"C:\Program Files\Solibri\SMCv9.6\Solibri Model Checker v9.6.exe");
-            solibriOptions.Add(sp);
-            sp = new SolibriProperties("Solibri Model Checker v9.7", @"C:\Program Files\Solibri\SMCv9.7\Solibri Model Checker v9.7.exe");
-            solibriOptions.Add(sp);
-            solibriOptions = solibriOptions.OrderBy(o => o.VersionNumber).ToList();
-
-            RemoteMachine rm = new RemoteMachine("NY", "NY-BAT-D001", @"\\NY-BAT-D001\SolibriBatch");
-            remoteOptions.Add(rm);
-            RemoteMachine rm2 = new RemoteMachine("PHI", "PHI-BAT-D001", @"\\PHI-BAT-D001\SolibriBatch");
-            remoteOptions.Add(rm2);
-            RemoteMachine rm3 = new RemoteMachine("HOU", "HOU-BAT-D001", @"\\HOU-BAT-D001\SolibriBatch");
-            remoteOptions.Add(rm3);
-            remoteOptions = remoteOptions.OrderBy(o => o.ComputerName).ToList();
-
+           
         }
 
         public AutorunSettings(SolibriProperties solibri, RemoteMachine remote)
@@ -66,12 +49,61 @@ namespace SolibriBatchSetup.Schema
         }
     }
 
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public class BatchOptions : INotifyPropertyChanged
+    {
+        private ObservableCollection<SolibriProperties> solibriOptions = new ObservableCollection<SolibriProperties>();
+        private ObservableCollection<RemoteMachine> remoteOptions = new ObservableCollection<RemoteMachine>();
+
+        public ObservableCollection<SolibriProperties> SolibriOptions { get { return solibriOptions; } set { solibriOptions = value; NotifyPropertyChanged("SolibriOptions"); } }
+        public ObservableCollection<RemoteMachine> RemoteOptions { get { return remoteOptions; } set { remoteOptions = value; NotifyPropertyChanged("RemoteOptions"); } }
+
+        public BatchOptions()
+        {
+        }
+
+        public void WriteDefault()
+        {
+            solibriOptions.Clear();
+            SolibriProperties sp = new SolibriProperties("Solibri Model Checker v9.5", @"C:\Program Files\Solibri\SMCv9.5\Solibri Model Checker v9.5.exe");
+            solibriOptions.Add(sp);
+            sp = new SolibriProperties("Solibri Model Checker v9.6", @"C:\Program Files\Solibri\SMCv9.6\Solibri Model Checker v9.6.exe");
+            solibriOptions.Add(sp);
+            sp = new SolibriProperties("Solibri Model Checker v9.7", @"C:\Program Files\Solibri\SMCv9.7\Solibri Model Checker v9.7.exe");
+            solibriOptions.Add(sp);
+            solibriOptions = new ObservableCollection<SolibriProperties>(solibriOptions.OrderBy(o => o.VersionNumber).ToList());
+
+            remoteOptions.Clear();
+            RemoteMachine rm = new RemoteMachine("NY", "NY-BAT-D001", @"\\NY-BAT-D001\SolibriBatch");
+            remoteOptions.Add(rm);
+            RemoteMachine rm2 = new RemoteMachine("PHI", "PHI-BAT-D001", @"\\PHI-BAT-D001\SolibriBatch");
+            remoteOptions.Add(rm2);
+            RemoteMachine rm3 = new RemoteMachine("HOU", "HOU-BAT-D001", @"\\HOU-BAT-D001\SolibriBatch");
+            remoteOptions.Add(rm3);
+            remoteOptions = new ObservableCollection<RemoteMachine>(remoteOptions.OrderBy(o => o.ComputerName).ToList());
+           
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
+    }
+
+    [System.SerializableAttribute()]
     public class SolibriProperties : INotifyPropertyChanged
     {
         private string versionNumber = "";
         private string exeFile = "";
 
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string VersionNumber { get { return versionNumber; } set { versionNumber = value; NotifyPropertyChanged("VersionNumber"); } }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string ExeFile { get { return exeFile; } set { exeFile = value; NotifyPropertyChanged("ExeFile"); } }
 
         public SolibriProperties()
@@ -94,14 +126,18 @@ namespace SolibriBatchSetup.Schema
         }
     }
 
+    [System.SerializableAttribute()]
     public class RemoteMachine : INotifyPropertyChanged
     {
         private string location = "";
         private string computerName = "";
         private string directoryName = "";
 
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Location { get { return location; } set { location = value; NotifyPropertyChanged("Location"); } }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string ComputerName { get { return computerName; } set { computerName = value; NotifyPropertyChanged("ComputerName"); } }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string DirectoryName { get { return directoryName; } set { directoryName = value; NotifyPropertyChanged("DirectoryName"); } }
 
         public RemoteMachine()

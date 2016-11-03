@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 using SolibriBatchSetup.Schema;
 using System.ComponentModel;
 
-namespace SolibriBatchSetup
+namespace SolibriBatchSetup.Utils
 {
     public static class BatchSetupUtils
     {
