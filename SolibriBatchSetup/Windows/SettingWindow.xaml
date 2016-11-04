@@ -1,9 +1,14 @@
 ﻿<Window x:Class="SolibriBatchSetup.SettingWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Settings" Height="900" Width="700"  MinHeight="900" MinWidth="700" Icon="Images/hoklogo.ico" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        Title="Settings" Height="900" Width="700"  MinHeight="900" MinWidth="700" Icon="Images/hoklogo.ico" 
+        WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Window.Resources>
-        <ResourceDictionary Source="MetroStyles.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MetroStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -89,7 +94,20 @@
                 </StackPanel>
                 <RadioButton Grid.Row="2" x:Name="radioButtonInPlaceReport" Content="Save In Place" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"
                                  IsChecked="{Binding ReportSettings.SaveInPlace}"/>
-                <RadioButton x:Name="radioButtonFolderReport" Grid.Row="3" Content="Save In Folder: " HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radioButtonFolderReport" Grid.Row="3" Content="Save In Folder: " HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+                    <RadioButton.Style>
+                        <Style TargetType="{x:Type RadioButton}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=radioButtonInPlaceReport}" Value="True">
+                                    <Setter Property="IsChecked" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=radioButtonInPlaceReport}" Value="False">
+                                    <Setter Property="IsChecked" Value="True"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
+                </RadioButton>  
                 <TextBox x:Name="textBoxReportFolder" IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Height="23" Margin="111,0,39,0" TextWrapping="Wrap" VerticalAlignment="Top"
                              Text="{Binding ReportSettings.OutputFolder}"/>
                 <Button x:Name="buttonOpenReportFolder" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,10,0"  VerticalAlignment="Top" Width="24" Height="24" Click="buttonOpenReportFolder_Click">
@@ -114,7 +132,20 @@
                 </Grid.RowDefinitions>
                 <RadioButton x:Name="radioButtonInPlaceSolibri" Content="Save In Place" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"
                              IsChecked="{Binding SaveSolibriSettings.SaveInPlace}"/>
-                <RadioButton x:Name="radioButtonFolderSolibri" Content="Save In Folder: " HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radioButtonFolderSolibri" Content="Save In Folder: " HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top">
+                    <RadioButton.Style>
+                        <Style TargetType="{x:Type RadioButton}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=radioButtonInPlaceSolibri}" Value="True">
+                                    <Setter Property="IsChecked" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=radioButtonInPlaceSolibri}" Value="False">
+                                    <Setter Property="IsChecked" Value="True"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
+                </RadioButton>         
                 <TextBox x:Name="textBoxSolibriFolder" HorizontalAlignment="Stretch" Height="23" Margin="111,0,39,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
                          Text="{Binding SaveSolibriSettings.OutputFolder}"/>
                 <Button x:Name="buttonOpenSolibriFolder" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="1" VerticalAlignment="Top" Width="24" Height="24" Click="buttonOpenSolibriFolder_Click">

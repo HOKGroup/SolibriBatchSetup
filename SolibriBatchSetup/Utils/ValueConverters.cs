@@ -55,4 +55,24 @@ namespace SolibriBatchSetup.Utils
         }
     }
 
+    public class SaveInConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            bool saveInFolderSelected = false;
+            if (null != value)
+            {
+                bool saveInPlaceSelected = (bool)value;
+                saveInFolderSelected = !saveInPlaceSelected;
+            }
+            return saveInFolderSelected;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }

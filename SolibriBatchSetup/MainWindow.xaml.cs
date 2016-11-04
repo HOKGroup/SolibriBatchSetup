@@ -34,6 +34,7 @@ namespace SolibriBatchSetup
         private AutorunSettings settings = new AutorunSettings();
         private bool isEditing = false;
         private string batchOptionFile = "BatchOptions.xml";
+        private string helpFile = @"V:\RVT-Data\HOK Program\Documentation\SolibriBatchManager_Instruction.pdf";
 
         public MainWindow()
         {
@@ -319,7 +320,17 @@ namespace SolibriBatchSetup
 
         private void menuHelp_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (File.Exists(helpFile))
+                {
+                    System.Diagnostics.Process.Start(helpFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+            }
         }
 
         private void menuBug_Click(object sender, RoutedEventArgs e)

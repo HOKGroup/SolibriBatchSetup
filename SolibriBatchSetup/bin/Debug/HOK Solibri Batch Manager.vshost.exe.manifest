@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HOK Solibri Batch Manager.exe" size="228864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HOK Solibri Batch Manager.exe" size="229888">
       <assemblyIdentity name="HOK Solibri Batch Manager" version="2016.0.1.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>S7MzuyYuV9DAmZaRuBJunSF94PJ841pPzPhLxBy3n8A=</dsig:DigestValue>
+        <dsig:DigestValue>tEXeEnxz5QTQMgXJf0V+SVdCRkGtFt85+SYp5FV0l6E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
