@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Simple Batch" default="root">
+	<target name="root">
+		<openmodel file="C:\Test Autorun\Models\building_architectural.ifc" shortname="" discipline="Architectural" />
+		<openmodel file="C:\Test Autorun\Models\building_mep.ifc" shortname="" discipline="Building Services" />
+		<openmodel file="C:\Test Autorun\Models\building_structural.ifc" shortname="" discipline="Structural" />
+		<savemodel file="C:\Test Autorun\Output\Clinic.smc" />
+		<closemodel />
+		<exit />
+	</target>
+</batch>

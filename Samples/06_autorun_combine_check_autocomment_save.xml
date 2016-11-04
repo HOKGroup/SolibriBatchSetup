@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Simple Batch" default="root">
+	<target name="root">
+		<openmodel file="C:\Test Autorun\Models\First_Floor_Vent.ifc" shortname="" discipline="Building Services" />
+		<openmodel file="C:\Test Autorun\Models\Ground_Floor_Vent.ifc" shortname="" discipline="Building Services" />
+		<openmodel file="C:\Test Autorun\Models\Second_Floor_Vent.ifc" shortname="" discipline="Building Services" />
+		<openmodel file="C:\Test Autorun\Models\SMC Building.ifc" shortname="" discipline="Architectural" />
+		<openruleset file="C:\Users\Public\Solibri\SMCv9.7\Rulesets\Architectural Rules\BIM Validation - Architectural.cset" />
+		<openruleset file="C:\Users\Public\Solibri\SMCv9.7\Rulesets\Architectural Rules\General Space Check.cset" />
+		<check />
+		<autocomment zoom="TRUE" maxsnapshotsincategory="3" />
+		<createpresentation />
+		<savemodel file="C:\Test Autorun\Output\Combined Checked SMC Building.smc" />
+		<closemodel />
+		<exit />
+	</target>
+</batch>
